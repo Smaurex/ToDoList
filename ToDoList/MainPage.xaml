@@ -3,53 +3,58 @@
     x:Class="ToDoList.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    BackgroundColor="black">
+    BackgroundColor="Black">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1.5*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="2*" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+    <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="*, *, 4*">
 
         <Image
             Grid.Row="0"
+            Grid.RowSpan="2"
             Grid.ColumnSpan="4"
             Aspect="AspectFill"
             Source="bluelock_todolist.png" />
+        <Button
+            x:Name="goToCreateTaskPage"
+            Grid.Row="1"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            BackgroundColor="LightGray"
+            BorderColor="black"
+            BorderWidth="3"
+            Clicked="goToCreateTaskPage_Clicked"
+            CornerRadius="30"
+            FontSize="20"
+            HeightRequest="50"
+            Text="+ NEW"
+            TextColor="Black"
+            WidthRequest="150" />
 
-        <Grid Grid.Row="1" Grid.ColumnSpan="4">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <BoxView
-                Grid.RowSpan="2"
-                Grid.ColumnSpan="4"
-                Color="LightGray" />
-
-            <Entry
-                x:Name="title"
-                Placeholder="title"
-                PlaceholderColor="black" />
-
-
-        </Grid>
-
-
+        <CollectionView Grid.Row="2" Grid.ColumnSpan="4">
+            <CollectionView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Apples</x:String>
+                    <x:String>Apples</x:String>
+                    <x:String>Apples</x:String>
+                    <x:String>Apples</x:String>
+                </x:Array>
+            </CollectionView.ItemsSource>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem BackgroundColor="red" Text="Delete" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Grid Padding="0,5">
+                            <Frame>
+                                <Label Text="{Binding .}" />
+                            </Frame>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
 
 
     </Grid>

@@ -1,4 +1,6 @@
-﻿namespace ToDoList
+﻿using ToDoList.Pages;
+
+namespace ToDoList
 {
     public partial class MainPage : ContentPage
     {
@@ -9,6 +11,10 @@
             InitializeComponent();
         }
 
-     
+
+        private void goToCreateTaskPage_Clicked(object sender, EventArgs e)
+        {
+           // Navigation.PopModalAsync(new CreateTask());
+        }
     }
 }
