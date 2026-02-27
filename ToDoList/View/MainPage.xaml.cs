@@ -14,7 +14,7 @@ namespace ToDoList
 
         private void goToCreateTaskPage_Clicked(object sender, EventArgs e)
         {
-           // Navigation.PopModalAsync(new CreateTask());
+           Navigation.PushModalAsync(new CreateTask());
         }
     }
 }

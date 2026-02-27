@@ -6,4 +6,9 @@ public partial class CreateTask : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void createBtn_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushModalAsync(new MainPage());
+    }
 }
