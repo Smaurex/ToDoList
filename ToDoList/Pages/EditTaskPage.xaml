@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ToDoList.Pages.EditTaskPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="EditTaskPage"
+    BackgroundColor="Black">
+
+    <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="*, 100, 3*, 100">
+
+        <Image
+            Grid.Row="0"
+            Grid.ColumnSpan="4"
+            Aspect="AspectFill"
+            Source="justdoit.png" />
+
+        <Entry
+            x:Name="taskTitleEdit"
+            Grid.Row="1"
+            Grid.ColumnSpan="4"
+            Margin="20"
+            BackgroundColor="LightGray"
+            FontSize="36"
+            Placeholder="Task Title"
+            PlaceholderColor="Black"
+            TextColor="black" />
+
+        <Editor
+            x:Name="taskDetailEdit"
+            Grid.Row="2"
+            Grid.ColumnSpan="4"
+            Margin="20"
+            BackgroundColor="LightGray"
+            FontSize="15"
+            Placeholder="Task Details..."
+            PlaceholderColor="Black"
+            TextColor="black" />
+
+        <Button
+            x:Name="saveBtn"
+            Grid.Row="3"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Clicked="saveBtn_Clicked"
+            FontSize="15"
+            HeightRequest="40"
+            Text="Create" />
+
+
+
+
+    </Grid>
+</ContentPage>

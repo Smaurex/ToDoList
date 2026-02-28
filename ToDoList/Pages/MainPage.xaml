@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ToDoList.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="Black">
+
+    <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="*, *, 4*">
+
+        <Image
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="4"
+            Aspect="AspectFill"
+            Source="bluelock_todolist.png" />
+        <Button
+            x:Name="goToCreateTaskPage"
+            Grid.Row="1"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            BackgroundColor="LightGray"
+            BorderColor="black"
+            BorderWidth="3"
+            Clicked="goToCreateTaskPage_Clicked"
+            CornerRadius="30"
+            FontSize="20"
+            HeightRequest="50"
+            Text="+ NEW"
+            TextColor="Black"
+            WidthRequest="150" />
+
+        <ListView
+            x:Name="taskView"
+            Grid.Row="2"
+            Grid.ColumnSpan="4"
+            RowHeight="100"
+            BackgroundColor="LightGray"
+            SeparatorColor="Black"
+            ItemSelected="taskView_ItemSelected"
+            ItemTapped="taskView_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell
+                        Detail="{Binding Detail}"
+                        Text="{Binding Title}"
+                        TextColor="Black"
+                        />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+    </Grid>
+</ContentPage>
