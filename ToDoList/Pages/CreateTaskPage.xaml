@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="ToDoList.Pages.CreateTask"
+    x:Class="ToDoList.Pages.CreateTaskPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="CreateTask"
@@ -40,7 +40,7 @@
             Grid.Row="3"
             Grid.Column="1"
             Grid.ColumnSpan="2"
-            Clicked="createBtn_Clicked"
+            Clicked="CreateBtn_Clicked"
             FontSize="15"
             HeightRequest="40"
             Text="Create" />

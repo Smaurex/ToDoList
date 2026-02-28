@@ -11,26 +11,22 @@ namespace ToDoList
         {
             InitializeComponent();
 
-            var items = new List<TaskItem> {
-                new TaskItem { Title = "Buy groceries", Detail = "Milk, Bread, Eggs" },
-                new TaskItem { Title = "Call Mom", Detail = "Her birthday is coming up" },
-                new TaskItem { Title = "Finish project", Detail = "Due next week" }
-            };
+            List <TaskItem> task = TaskRepository.GetTask();
 
-            taskView.ItemsSource = items;
+            taskView.ItemsSource = task;
         }
 
 
         private async void goToCreateTaskPage_Clicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync(nameof(CreateTask));
+            await Shell.Current.GoToAsync(nameof(CreateTaskPage));
         }
 
         private async void taskView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             //logic here
             if (taskView.SelectedItem != null) {
-                await Shell.Current.GoToAsync(nameof(EditTaskPage));
+                await Shell.Current.GoToAsync($"{nameof(EditTaskPage)}?id={((TaskItem)taskView.SelectedItem).TaskId}");
 
             } 
         }

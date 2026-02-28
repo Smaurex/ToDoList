@@ -33,18 +33,17 @@
             x:Name="taskView"
             Grid.Row="2"
             Grid.ColumnSpan="4"
-            RowHeight="100"
             BackgroundColor="LightGray"
-            SeparatorColor="Black"
             ItemSelected="taskView_ItemSelected"
-            ItemTapped="taskView_ItemTapped">
+            ItemTapped="taskView_ItemTapped"
+            RowHeight="100"
+            SeparatorColor="Black">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell
                         Detail="{Binding Detail}"
                         Text="{Binding Title}"
-                        TextColor="Black"
-                        />
+                        TextColor="Black" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

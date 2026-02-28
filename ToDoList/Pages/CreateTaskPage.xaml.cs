@@ -7,9 +7,9 @@ public partial class CreateTaskPage : ContentPage
 		InitializeComponent();
 	}
 
-    private async void createBtn_Clicked(object sender, EventArgs e)
+    private async void CreateBtn_Clicked(object sender, EventArgs e)
     {
 
-        await Shell.Current.GoToAsync("..");
+        await Shell.Current.GoToAsync(nameof(MainPage));
     }
 }
