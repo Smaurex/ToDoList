@@ -1,4 +1,5 @@
-﻿using ToDoList.Models;
+﻿using System.Collections.ObjectModel;
+using ToDoList.Models;
 using ToDoList.Pages;
 
 namespace ToDoList
@@ -10,12 +11,15 @@ namespace ToDoList
         public MainPage()
         {
             InitializeComponent();
-
-            List <TaskItem> task = TaskRepository.GetTask();
-
-            taskView.ItemsSource = task;
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            var taskList = new ObservableCollection<TaskItem>(TaskRepository.GetTask());
+            taskView.ItemsSource = taskList;
+        }
 
         private async void goToCreateTaskPage_Clicked(object sender, EventArgs e)
         {

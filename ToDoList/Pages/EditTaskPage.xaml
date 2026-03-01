@@ -44,7 +44,7 @@
             Clicked="saveBtn_Clicked"
             FontSize="15"
             HeightRequest="40"
-            Text="Create" />
+            Text="Save" />
 
 
 

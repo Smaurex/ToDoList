@@ -10,20 +10,27 @@ public partial class EditTaskPage : ContentPage
 	{
 		InitializeComponent();
 	}
-
-    private async void saveBtn_Clicked(object sender, EventArgs e)
-    {
-        await Shell.Current.GoToAsync(nameof(MainPage));
-    }
-
-    public string TaskId 
+     public string TaskId 
     {
         set
         {
            task =  TaskRepository.GetTaskById(int.Parse(value));
-           taskTitleEdit.Text = task.Title;
-           taskDetailEdit.Text = task.Detail;
+           if(task != null)
+            {
+                taskTitleEdit.Text = task.Title;
+                taskDetailEdit.Text = task.Detail;
+            }
         }
     
+    }
+
+    private async void saveBtn_Clicked(object sender, EventArgs e)
+    {
+        task.Title = taskTitleEdit.Text;
+        task.Detail = taskDetailEdit.Text;
+
+        TaskRepository.UpdateTask(task.TaskId, task);
+
+        await Shell.Current.GoToAsync("..");
     }
 }
