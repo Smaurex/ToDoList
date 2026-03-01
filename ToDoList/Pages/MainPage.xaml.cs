@@ -16,9 +16,7 @@ namespace ToDoList
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            var taskList = new ObservableCollection<TaskItem>(TaskRepository.GetTask());
-            taskView.ItemsSource = taskList;
+            loadTasks();
         }
 
         private async void goToCreateTaskPage_Clicked(object sender, EventArgs e)
@@ -38,6 +36,21 @@ namespace ToDoList
         private void taskView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             taskView.SelectedItem = null; // Deselect the item after selection
+        }
+
+        private void Delete_Clicked(object sender, EventArgs e)
+        {
+            var menuItem = sender as MenuItem;
+            var taskToDelete = menuItem.CommandParameter as TaskItem;
+
+            TaskRepository.DeleteTask(taskToDelete.TaskId);
+            loadTasks();
+        }
+
+        private void loadTasks()
+        {
+            var taskList = new ObservableCollection<TaskItem>(TaskRepository.GetTask());
+            taskView.ItemsSource = taskList;
         }
     }
 }

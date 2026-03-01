@@ -51,6 +51,15 @@ namespace ToDoList.Models
             }
         }
 
+        public static void DeleteTask(int taskId)
+        {
+            var taskToDelete = taskList.FirstOrDefault(t => t.TaskId == taskId); //lamentory expression
+            if (taskToDelete != null)
+            {
+                taskList.Remove(taskToDelete);
+            }
+        }
+
         public static int NewId()
         {
             return taskList.Any() ? taskList.Max(x => x.TaskId) + 1 : 1;
